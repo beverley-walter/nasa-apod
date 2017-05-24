@@ -9,7 +9,8 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       imgUrl: '',
-      expl: ''
+      expl: '',
+      media: ''
     }
   }
 
@@ -22,7 +23,7 @@ export default class App extends React.Component {
       if (error) {
         console.log(error);
       } else {
-        this.setState({imgUrl: body.url, expl: body.explanation})
+        this.setState({imgUrl: body.url, expl: body.explanation, media: body.media_type})
         setTimeout(() => {this.setImageDaily()}, 86400000)
       }
     })
@@ -31,15 +32,19 @@ export default class App extends React.Component {
   getExplanation () {
     return this.state.expl
   }
-  
+
   getImgUrl () {
     return this.state.imgUrl
+  }
+
+  getMediaType () {
+    return this.state.media
   }
 
   render () {
     return (
       <div>
-        <Apod getImgUrl = {() => this.getImgUrl()} getExplanation = {() => this.getExplanation()} />
+        <Apod getImgUrl = {() => this.getImgUrl()} getExplanation = {() => this.getExplanation()} getMediaType = {() => this.getMediaType()} />
       </div>
     )
   }
