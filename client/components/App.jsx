@@ -14,6 +14,11 @@ export default class App extends React.Component {
   }
 
   componentDidMount () {
+    this.setPictureEachDay()
+  }
+
+  setCurrentPicture () {
+console.log('Are you entering this func?');
     apodApi.getApod((error, body) => {
       if (error) {
         console.log(error);
@@ -22,6 +27,19 @@ export default class App extends React.Component {
       }
     })
   }
+
+  setPictureEachDay () {
+    console.log('hi')
+    apodApi.getApod((error, body) => {
+      if (error) {
+        console.log(error);
+      } else {
+        this.setState({imgUrl: body.url, expl: body.explanation})
+        setTimeout(() => {this.setPictureEachDay()}, 800)
+      }
+    })
+  }
+
   getExplanation () {
     return this.state.expl
   }

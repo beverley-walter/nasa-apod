@@ -7,7 +7,8 @@ const Apod = ({getImgUrl, getExplanation}) => {
         <iframe width="420" height="315"
           src={getImgUrl()}>
         </iframe>
-        <p>Explanation: {getExplanation()}</p>
+        <h2>Explanation:</h2>
+        <p>{getExplanation()}</p>
     </div>
   )
 }
