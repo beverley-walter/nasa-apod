@@ -8,7 +8,9 @@ function getApod (callback) {
     })
 }
 
-getApod(console.log)
+getApod(function ({title, date, url}) {
+  console.log(`title: ${title}, date: ${date} url: ${url}`)
+})
 
 module.exports = {
   getApod

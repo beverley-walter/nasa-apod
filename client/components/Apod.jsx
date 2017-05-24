@@ -1,10 +1,11 @@
 import React from 'react'
 
-import apodApi from '../apodApi'
-
-const Apod = () => {
+const Apod = ({getImgUrl}) => {
   return(
-    <h1>APOD</h1>
+    <div>
+      <h1>APOD</h1>
+      <p>url: {getImgUrl()}</p>
+    </div>
   )
 }
 
