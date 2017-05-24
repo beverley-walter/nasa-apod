@@ -8,20 +8,22 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      imgUrl = ''
+      imgUrl: ''
     }
   }
 
   componentDidMount () {
-    apodApi.getApod(() => )
+    apodApi.getApod((error, body) => {
+      if (error) {
+        console.log(error);
+      } else {
+        this.setState({imgUrl: body.url})
+      }
+    })
   }
 
   getImgUrl () {
-    console.log(apodApi.getApod(({url}) => {
-      console.log('url: ' + url)
-        return url
-      })
-    )
+    return this.state.imgUrl
   }
 
   render () {
