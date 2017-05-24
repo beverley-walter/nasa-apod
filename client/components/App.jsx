@@ -8,7 +8,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      imgUrl: ''
+      imgUrl: '',
+      expl: ''
     }
   }
 
@@ -17,11 +18,13 @@ export default class App extends React.Component {
       if (error) {
         console.log(error);
       } else {
-        this.setState({imgUrl: body.url})
+        this.setState({imgUrl: body.url, expl: body.explanation})
       }
     })
   }
-
+  getExplanation () {
+    return this.state.expl
+  }
   getImgUrl () {
     return this.state.imgUrl
   }
@@ -29,7 +32,7 @@ export default class App extends React.Component {
   render () {
     return (
       <div>
-        <Apod getImgUrl={() => this.getImgUrl()} />
+        <Apod getImgUrl = {() => this.getImgUrl()} getExplanation = {() => this.getExplanation()} />
       </div>
     )
   }

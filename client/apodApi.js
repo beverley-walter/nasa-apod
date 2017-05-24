@@ -12,10 +12,6 @@ function getApod (callback) {
     })
 }
 
-getApod(function (error, {title, date, url}) {
-  console.log(`title: ${title}, date: ${date} url: ${url}`)
-})
-
 module.exports = {
   getApod
 }
